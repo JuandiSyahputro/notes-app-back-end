@@ -6,6 +6,7 @@ const connection = mysql.createConnection({
   user: process.env.DB_USERNAME || 'root',
   password: process.env.DB_PASSWORD || '',
   database: process.env.DB_NAME_DATABASE || 'notes_app',
+  port: process.env.PORT,
 });
 
 connection.connect((err) => {
