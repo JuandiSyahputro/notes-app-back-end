@@ -6,7 +6,7 @@ const connection = require('./connection');
 const init = async () => {
   const server = Hapi.server({
     port: process.env.PORT || 5001,
-    host: process.env.DB_HOSTNAME || 'localhost',
+    host: 'localhost',
     routes: {
       cors: {
         origin: ['*'],
