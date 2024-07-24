@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start:prod": "export NODE_ENV=production && node ./src/server.js",
-    "start:dev": "node --watch ./src/server.js",
+    "start:prod": "export NODE_ENV=production && node ./src/index.js",
+    "start:dev": "node --watch ./src/index.js",
     "lint": "eslint ./src"
   },
   "keywords": [],
