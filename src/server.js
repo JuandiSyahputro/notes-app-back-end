@@ -1,10 +1,11 @@
 const Hapi = require('@hapi/hapi');
 const routes = require('./routes');
+require('dotenv').config();
 
 const init = async () => {
   const server = Hapi.server({
-    port: 5000,
-    host: process.env.NODE_ENV !== 'production' ? 'localhost' : '0.0.0.0',
+    port: process.env.DB_PORT || 5001,
+    host: process.env.DB_HOSTNAME || 'localhost',
     routes: {
       cors: {
         origin: ['*'],
