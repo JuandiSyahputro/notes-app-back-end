@@ -1,10 +1,11 @@
 require('dotenv').config();
 const Hapi = require('@hapi/hapi');
 const routes = require('./routes');
+const connection = require('./connection');
 
 const init = async () => {
   const server = Hapi.server({
-    port: process.env.DB_PORT || 5001,
+    port: process.env.PORT || 5001,
     host: process.env.DB_HOSTNAME || 'localhost',
     routes: {
       cors: {
@@ -12,6 +13,15 @@ const init = async () => {
       },
     },
   });
+
+  const dbPlugin = {
+    name: 'dbPlugin',
+    register: async function (server) {
+      server.app.db = connection;
+    },
+  };
+
+  await server.register(dbPlugin);
 
   server.route(routes);
 
