@@ -35,7 +35,7 @@ const addNoteHandler = async (request, h) => {
     console.log(error);
     const response = h.response({
       status: 'fail',
-      message: 'Failed to add note',
+      message: 'Failed to add note' + error,
       status_code: 500,
     });
     response.code(500);
@@ -122,7 +122,7 @@ const getAllNotesHandler = async (request, h) => {
       .response({
         status: 'fail',
         status_code: 500,
-        message: 'Failed to get notes',
+        message: 'Failed to get notes' + err,
       })
       .code(500);
   }
@@ -159,7 +159,7 @@ const getNoteByIdHandler = async (request, h) => {
       .response({
         status: 'fail',
         status_code: 500,
-        message: 'Failed to get note',
+        message: 'Failed to get note' + error,
       })
       .code(500);
   }
@@ -229,7 +229,7 @@ const editNoteByIdHandler = async (request, h) => {
       .response({
         status: 'fail',
         message: 'Failed to update TodoList',
-        status_code: 500,
+        status_code: 500 + error,
       })
       .code(500);
   }
@@ -264,7 +264,7 @@ const deleteNoteByIdHandler = async (request, h) => {
     const response = h.response({
       status: 'fail',
       status_code: 500,
-      message: 'Failed to delete TodoList',
+      message: 'Failed to delete TodoList' + error,
     });
     response.code(500);
     return response;
@@ -310,7 +310,7 @@ const addItemsNote = async (request, h) => {
     const response = h.response({
       status: 'fail',
       status_code: 500,
-      message: 'Failed to add note item',
+      message: 'Failed to add note item' + error,
     });
     response.code(500);
 
@@ -353,7 +353,7 @@ const editItemsNote = async (request, h) => {
       .response({
         status: 'fail',
         status_code: 500,
-        message: 'Failed to update note item',
+        message: 'Failed to update note item' + error,
       })
       .code(500);
   }
@@ -386,7 +386,7 @@ const deleteItemsNote = async (request, h) => {
     const response = h.response({
       status: 'fail',
       status_code: 500,
-      message: 'Failed to delete note item',
+      message: 'Failed to delete note item' + error,
     });
     response.code(500);
     return response;
