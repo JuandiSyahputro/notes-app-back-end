@@ -2,10 +2,9 @@
   "name": "hapi-web-server",
   "version": "1.0.0",
   "description": "",
-  "main": "./src/index.js",
+  "main": "index.js",
   "scripts": {
-    "start:prod": "export NODE_ENV=production && node ./src/index.js",
-    "start:dev": "node --watch ./src/index.js",
+    "start": "node ./src/index.js",
     "lint": "eslint ./src"
   },
   "keywords": [],

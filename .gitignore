@@ -3,3 +3,4 @@ pem-file
 package-lock.json
 pnpm-lock.yaml
 .env
+.vercel
