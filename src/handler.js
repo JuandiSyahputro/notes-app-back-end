@@ -66,7 +66,7 @@ const getAllNotesHandler = async (request, h) => {
   if (filterDate) {
     sql += ` AND DATE(notes.date_note) = ?`;
   } else {
-    sql += ` AND DATE(notes.created_at) = CURDATE()`;
+    sql += ` AND DATE(notes.date_note) = CURDATE()`;
   }
 
   sql += ` ORDER BY notes.created_at DESC;`;
