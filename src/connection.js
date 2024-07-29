@@ -7,7 +7,7 @@ const connection = mysql.createConnection({
   password: process.env.DB_PASSWORD || '',
   database: process.env.DB_NAME_DATABASE || 'notes_app',
   port: process.env.PORT,
-  connectionLimit: 100,
+  connectionLimit: 50,
 });
 
 connection.connect((err) => {
