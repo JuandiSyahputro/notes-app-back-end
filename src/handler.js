@@ -54,7 +54,8 @@ const getAllNotesHandler = async (request, h) => {
       notes.date_note AS note_date_note,
       note_items.id AS item_id, 
       note_items.title AS item_title, 
-      note_items.is_completed AS item_is_completed
+      note_items.is_completed AS item_is_completed,
+      note_items.created_at AS item_created_at
     FROM 
       notes
     LEFT JOIN 
@@ -69,7 +70,7 @@ const getAllNotesHandler = async (request, h) => {
     sql += ` AND DATE(notes.date_note) = CURDATE()`;
   }
 
-  sql += ` ORDER BY notes.created_at DESC;`;
+  sql += ` ORDER BY note_items.created_at DESC, notes.created_at DESC;`;
 
   try {
     const results = await connection.query(sql, [filterDate]);
@@ -273,7 +274,7 @@ const deleteNoteByIdHandler = async (request, h) => {
 
 const addItemsNote = async (request, h) => {
   const { content, id_notes } = request.payload;
-  if (!Array.isArray(content)) {
+  if (content.length < 1) {
     const response = h.response({
       status: 'fail',
       message: 'Catatan items harus berupa array',
